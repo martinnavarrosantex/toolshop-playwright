@@ -1,19 +1,16 @@
-# Los 10 casos de mi regresión que más tiempo me consumen
+# Casos de regresión
 
-Entregable del paso 1 del path. Salen de **mi proyecto real**, no de Toolshop.
-Después, en el paso 2, se los paso al Planner de los agentes de Playwright.
+Los diez casos de la regresión de Toolshop que más tiempo consumen si se prueban a mano.
 
-| # | Caso | Flujo / módulo | Por qué consume tiempo (pasos, datos, frecuencia) | Tiempo manual aprox. | ¿UI o API? |
-|---|------|----------------|---------------------------------------------------|----------------------|------------|
-| 1 |  |  |  |  |  |
-| 2 |  |  |  |  |  |
-| 3 |  |  |  |  |  |
-| 4 |  |  |  |  |  |
-| 5 |  |  |  |  |  |
-| 6 |  |  |  |  |  |
-| 7 |  |  |  |  |  |
-| 8 |  |  |  |  |  |
-| 9 |  |  |  |  |  |
-| 10 |  |  |  |  |  |
-
-**Criterio para elegirlos:** los que corrés en cada release, con muchos pasos o datos que preparar, y donde un error llega al usuario.
+| # | Caso | Módulo | Por qué consume tiempo |
+|---|------|--------|------------------------|
+| 1 | Checkout completo con usuario logueado | Checkout | Carrito, login, dirección y pago: muchos pasos y datos |
+| 2 | Checkout como invitado | Checkout | Formulario de invitado y dirección completa |
+| 3 | Checkout con cada medio de pago | Checkout | Cada medio pide campos distintos y hay que repetir el flujo |
+| 4 | Total del carrito con varios productos y cantidades | Carrito | Hay que calcular a mano precio por cantidad y la suma |
+| 5 | Cambiar cantidad y quitar productos recalcula el total | Carrito | Varias combinaciones y verificar cada recálculo |
+| 6 | Producto sin stock no se puede agregar al carrito | Producto | Hay que encontrar productos agotados y probar cada uno |
+| 7 | Búsqueda por nombre, con y sin resultados | Catálogo | Varios términos y verificar cada resultado |
+| 8 | Filtros por categoría y marca, y orden por precio | Catálogo | Muchas combinaciones de filtros y verificar el orden |
+| 9 | Login válido, inválido y bloqueo tras intentos fallidos | Autenticación | Repetir intentos hasta que se bloquea la cuenta |
+| 10 | Registro de usuario nuevo con validación de campos | Registro | Formulario largo, datos únicos y un caso por validación |
