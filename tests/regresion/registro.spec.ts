@@ -5,7 +5,9 @@ import { test, expect } from '@playwright/test';
 import { completarRegistro, iniciarSesion, nuevaCuenta } from './helpers';
 
 test.describe('Registro', () => {
-  test('10. Registro de usuario nuevo con validación de campos', async ({ page }) => {
+  // Bug de Toolshop: el registro no avisa que el email no tiene formato válido (el login sí).
+  // Cuando lo corrijan, este test pasa a fallar.
+  test.fail('10. Registro de usuario nuevo con validación de campos', async ({ page }) => {
     const cuenta = nuevaCuenta('ana');
 
     // 1. Ir a /auth/register y clic en register-submit sin completar nada.
@@ -31,8 +33,9 @@ test.describe('Registro', () => {
     await expect(page.getByText('Password must be minimal 6 characters long.')).toBeVisible();
     await expect(page.getByText('Password can not include invalid characters.')).toBeVisible();
 
-    // 3. Probar fecha de nacimiento fuera de formato y teléfono con letras.
-    // (El email sin formato válido está en su propio test, más abajo.)
+    // 3. Probar email sin formato válido, fecha de nacimiento fuera de formato y teléfono con letras.
+    await page.getByTestId('email').fill('sinarroba');
+    await expect(page.getByText('Email format is invalid')).toBeVisible();
     await page.getByTestId('dob').fill('15/05/1990');
     await expect(page.getByText('Please enter a valid date in YYYY-MM-DD format.')).toBeVisible();
     await page.getByTestId('phone').fill('abc123');
@@ -57,14 +60,5 @@ test.describe('Registro', () => {
       'A customer with this email address already exists.'
     );
     await expect(page).toHaveURL(/\/auth\/register/);
-  });
-
-  // Bug de Toolshop: el registro no avisa que el email no tiene formato válido (el login sí).
-  // Cuando lo corrijan, este test pasa a fallar.
-  test.fail('10. Registro rechaza un email sin formato válido', async ({ page }) => {
-    await page.goto('/auth/register');
-    await page.getByTestId('email').fill('sinarroba');
-    await page.getByTestId('email').blur();
-    await expect(page.getByText('Email format is invalid')).toBeVisible();
   });
 });

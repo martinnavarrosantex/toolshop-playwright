@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
+import { LoginPage } from '../../pages/login-page';
 
 export interface Cuenta {
   email: string;
@@ -43,10 +44,9 @@ export async function registrarCuenta(page: Page, prefijo = 'ana'): Promise<Cuen
 }
 
 export async function iniciarSesion(page: Page, cuenta: Cuenta) {
-  await page.goto('/auth/login');
-  await page.getByTestId('email').fill(cuenta.email);
-  await page.getByTestId('password').fill(cuenta.password);
-  await page.getByTestId('login-submit').click();
+  const login = new LoginPage(page);
+  await login.open();
+  await login.login(cuenta.email, cuenta.password);
   await expect(page).toHaveURL(/\/account/);
 }
 
