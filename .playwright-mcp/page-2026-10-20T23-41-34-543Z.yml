@@ -1,0 +1,94 @@
+- generic [ref=f15e2]:
+  - generic [ref=f15e3]:
+    - text: View the
+    - link "Documentation" [ref=f15e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f15e5]:
+    - generic [ref=f15e7]:
+      - generic [ref=f15e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f15e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f15e10] [cursor=pointer]
+    - navigation [ref=f15e11]:
+      - generic [ref=f15e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f15e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f15e32]:
+          - menubar "Main menu" [ref=f15e33]:
+            - menuitem [ref=f15e34]:
+              - link "Home" [ref=f15e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f15e36]:
+              - button "Categories" [ref=f15e37] [cursor=pointer]
+            - menuitem [ref=f15e38]:
+              - link "Contact" [ref=f15e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem "Ana Prueba My account My favorites My profile My invoices My messages Sign out" [ref=f15e106]:
+              - button "Ana Prueba" [expanded] [active] [ref=f15e107] [cursor=pointer]
+              - list "Ana Prueba" [ref=f15e108]:
+                - listitem [ref=f15e109]:
+                  - link "My account" [ref=f15e110] [cursor=pointer]:
+                    - /url: /account
+                - listitem [ref=f15e111]:
+                  - link "My favorites" [ref=f15e112] [cursor=pointer]:
+                    - /url: /account/favorites
+                - listitem [ref=f15e113]:
+                  - link "My profile" [ref=f15e114] [cursor=pointer]:
+                    - /url: /account/profile
+                - listitem [ref=f15e115]:
+                  - link "My invoices" [ref=f15e116] [cursor=pointer]:
+                    - /url: /account/invoices
+                - listitem [ref=f15e117]:
+                  - link "My messages" [ref=f15e118] [cursor=pointer]:
+                    - /url: /account/messages
+                - listitem [ref=f15e119]:
+                  - separator [ref=f15e120]
+                - listitem [ref=f15e121]:
+                  - generic [ref=f15e122]: Sign out
+          - button "Select language" [ref=f15e41] [cursor=pointer]: EN
+  - generic [ref=f15e46]:
+    - heading "My account" [level=1] [ref=f15e47]
+    - paragraph [ref=f15e48]: Here you can manage your profile, favorites and orders.
+    - generic [ref=f15e49]:
+      - link [ref=f15e50] [cursor=pointer]:
+        - /url: /account/favorites
+      - link [ref=f15e54] [cursor=pointer]:
+        - /url: /account/profile
+      - link [ref=f15e58] [cursor=pointer]:
+        - /url: /account/invoices
+      - link [ref=f15e62] [cursor=pointer]:
+        - /url: /account/messages
+  - contentinfo [ref=f15e67]:
+    - generic [ref=f15e69]:
+      - generic [ref=f15e70]: Learn & Explore
+      - generic [ref=f15e71]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f15e73] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f15e76]:
+            - generic [ref=f15e77]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f15e79] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f15e82]:
+            - generic [ref=f15e83]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f15e85] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f15e88]:
+            - generic [ref=f15e89]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f15e90]:
+      - generic [ref=f15e91]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f15e92] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f15e93] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f15e94] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f15e95]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f15e97] [cursor=pointer]
+  - button "Show live shop activity" [ref=f15e101] [cursor=pointer]

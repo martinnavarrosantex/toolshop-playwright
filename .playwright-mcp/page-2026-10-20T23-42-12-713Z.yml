@@ -1,0 +1,88 @@
+- generic [ref=f17e2]:
+  - generic [ref=f17e3]:
+    - text: View the
+    - link "Documentation" [ref=f17e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f17e5]:
+    - generic [ref=f17e7]:
+      - generic [ref=f17e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f17e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f17e10] [cursor=pointer]
+    - navigation [ref=f17e11]:
+      - generic [ref=f17e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f17e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f17e32]:
+          - menubar "Main menu" [ref=f17e33]:
+            - menuitem [ref=f17e34]:
+              - link "Home" [ref=f17e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f17e36]:
+              - button "Categories" [ref=f17e37] [cursor=pointer]
+            - menuitem [ref=f17e38]:
+              - link "Contact" [ref=f17e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem [ref=f17e40]:
+              - link "Sign in" [ref=f17e41] [cursor=pointer]:
+                - /url: /auth/login
+          - button "Select language" [ref=f17e43] [cursor=pointer]: EN
+  - generic [ref=f17e51]:
+    - heading "Login" [level=3] [ref=f17e52]
+    - button "Sign in with Google" [ref=f17e54] [cursor=pointer]
+    - generic "Alternative login methods" [ref=f17e55]: or use
+    - generic [ref=f17e56]:
+      - generic [ref=f17e57]:
+        - generic [ref=f17e58]: Email address *
+        - textbox "Email address *" [ref=f17e59]:
+          - /placeholder: Your email
+          - text: ana.1760996000@example.com
+      - generic [ref=f17e60]:
+        - generic [ref=f17e61]: Password *
+        - generic [ref=f17e63]:
+          - textbox "Password *" [ref=f17e64]:
+            - /placeholder: Your password
+            - text: Incorrecta#123
+          - button [ref=f17e66] [cursor=pointer]
+      - button "Login" [active] [ref=f17e71] [cursor=pointer]
+    - paragraph [ref=f17e73]:
+      - text: Not yet an account?
+      - link "Register your account" [ref=f17e74] [cursor=pointer]:
+        - /url: /auth/register
+      - link "Forgot your Password?" [ref=f17e75] [cursor=pointer]:
+        - /url: /auth/forgot-password
+    - generic [ref=f17e120]: Account locked, too many failed attempts. Please contact the administrator.
+  - contentinfo [ref=f17e77]:
+    - generic [ref=f17e79]:
+      - generic [ref=f17e80]: Learn & Explore
+      - generic [ref=f17e81]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f17e83] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f17e86]:
+            - generic [ref=f17e87]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f17e89] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f17e92]:
+            - generic [ref=f17e93]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f17e95] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f17e98]:
+            - generic [ref=f17e99]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f17e100]:
+      - generic [ref=f17e101]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f17e102] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f17e103] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f17e104] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f17e105]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f17e107] [cursor=pointer]
+  - button "Show live shop activity" [ref=f17e111] [cursor=pointer]

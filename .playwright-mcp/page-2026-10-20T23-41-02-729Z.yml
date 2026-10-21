@@ -1,0 +1,107 @@
+- generic [ref=f14e2]:
+  - generic [ref=f14e3]:
+    - text: View the
+    - link "Documentation" [ref=f14e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f14e5]:
+    - generic [ref=f14e7]:
+      - generic [ref=f14e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f14e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f14e10] [cursor=pointer]
+    - navigation [ref=f14e11]:
+      - generic [ref=f14e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f14e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f14e32]:
+          - menubar "Main menu" [ref=f14e33]:
+            - menuitem [ref=f14e34]:
+              - link "Home" [ref=f14e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f14e36]:
+              - button "Categories" [ref=f14e37] [cursor=pointer]
+            - menuitem [ref=f14e38]:
+              - link "Contact" [ref=f14e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem [ref=f14e96]:
+              - button "Ana Prueba" [ref=f14e97] [cursor=pointer]
+            - menuitem [ref=f14e40]:
+              - link "cart" [ref=f14e41] [cursor=pointer]:
+                - /url: /checkout
+                - generic [ref=f14e45]: "1"
+          - button "Select language" [ref=f14e47] [cursor=pointer]: EN
+  - generic [ref=f14e53]:
+    - list [ref=f14e55]:
+      - listitem [ref=f14e98]:
+        - generic [ref=f14e99] [cursor=pointer]:
+          - generic [ref=f14e100]: Cart
+          - generic [ref=f14e101]: "1"
+      - listitem [ref=f14e111]:
+        - generic [ref=f14e112] [cursor=pointer]:
+          - generic [ref=f14e113]: Sign in
+          - generic [ref=f14e114]: "2"
+      - listitem [ref=f14e144]:
+        - generic [ref=f14e145] [cursor=pointer]:
+          - generic [ref=f14e146]: Billing Address
+          - generic [ref=f14e147]: "3"
+      - listitem:
+        - generic:
+          - generic: Payment
+          - generic: "4"
+    - generic [ref=f14e152]:
+      - heading "Payment" [level=3] [ref=f14e153]
+      - generic [ref=f14e154]:
+        - generic [ref=f14e155]:
+          - generic [ref=f14e156]: Payment Method
+          - combobox "Payment Method" [ref=f14e157]:
+            - option "Choose your payment method" [disabled]
+            - option "Bank Transfer"
+            - option "Cash on Delivery"
+            - option "Credit Card"
+            - option "Buy Now Pay Later"
+            - option "Gift Card" [selected]
+        - generic [ref=f14e159]:
+          - generic [ref=f14e160]: Gift Card Number
+          - textbox "Gift Card Number" [active] [ref=f14e161]: "@@"
+          - generic [ref=f14e162]: Enter the unique number found on your gift card. This number is usually located on the back of the card and consists of 16 letters and/or digits.
+          - generic [ref=f14e166]: "Please enter a valid gift card number: exactly 16 letters and/or digits."
+          - generic [ref=f14e163]: Validation Code
+          - textbox "Validation Code" [ref=f14e164]: "@@"
+          - generic [ref=f14e165]: The validation code is a security feature found on your gift card, often located near the gift card number. Enter this 4-character code exactly as it appears on your card.
+          - generic [ref=f14e168]: "Please enter a valid validation code: exactly 4 letters and/or digits."
+      - generic [ref=f14e158]:
+        - button "Check payment" [disabled]
+  - contentinfo [ref=f14e57]:
+    - generic [ref=f14e59]:
+      - generic [ref=f14e60]: Learn & Explore
+      - generic [ref=f14e61]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f14e63] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f14e66]:
+            - generic [ref=f14e67]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f14e69] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f14e72]:
+            - generic [ref=f14e73]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f14e75] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f14e78]:
+            - generic [ref=f14e79]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f14e80]:
+      - generic [ref=f14e81]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f14e82] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f14e83] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f14e84] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f14e85]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f14e87] [cursor=pointer]
+  - button "Show live shop activity" [ref=f14e91] [cursor=pointer]

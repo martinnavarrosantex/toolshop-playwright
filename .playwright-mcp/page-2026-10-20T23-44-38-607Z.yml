@@ -1,0 +1,154 @@
+- generic [ref=f22e2]:
+  - generic [ref=f22e3]:
+    - text: View the
+    - link "Documentation" [ref=f22e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f22e5]:
+    - generic [ref=f22e7]:
+      - generic [ref=f22e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f22e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f22e10] [cursor=pointer]
+    - navigation [ref=f22e11]:
+      - generic [ref=f22e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f22e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f22e32]:
+          - menubar "Main menu" [ref=f22e33]:
+            - menuitem [ref=f22e34]:
+              - link "Home" [ref=f22e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f22e36]:
+              - button "Categories" [ref=f22e37] [cursor=pointer]
+            - menuitem [ref=f22e38]:
+              - link "Contact" [ref=f22e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem [ref=f22e40]:
+              - link "Sign in" [ref=f22e41] [cursor=pointer]:
+                - /url: /auth/login
+            - menuitem [ref=f22e42]:
+              - link "cart" [ref=f22e43] [cursor=pointer]:
+                - /url: /checkout
+                - generic [ref=f22e47]: "4"
+          - button "Select language" [ref=f22e49] [cursor=pointer]: EN
+  - generic [ref=f22e305]:
+    - generic [ref=f22e306]:
+      - figure [ref=f22e308]:
+        - img "Long Nose Pliers" [ref=f22e310]
+        - generic [ref=f22e311]:
+          - text: Photo by
+          - link "Brett Jordan" [ref=f22e312] [cursor=pointer]:
+            - /url: https://unsplash.com/@brett_jordan
+          - text: "on"
+          - link "Unsplash" [ref=f22e313] [cursor=pointer]:
+            - /url: https://unsplash.com/photos/GamuDTVm02g
+          - text: .
+      - generic [ref=f22e314]:
+        - heading "Long Nose Pliers" [level=1] [ref=f22e315]
+        - paragraph [ref=f22e316]:
+          - generic "category" [ref=f22e317]: Pliers
+          - generic "brand" [ref=f22e318]: MightyCraft Hardware
+        - generic [ref=f22e319]: $14.24
+        - generic "A = most environmentally friendly, E = higher environmental impact" [ref=f22e321]:
+          - text: "CO₂:"
+          - generic [ref=f22e322]: A
+          - generic [ref=f22e323]: B
+          - generic [ref=f22e324]: C
+          - generic [ref=f22e325]: D
+          - generic [ref=f22e326]: E
+        - paragraph [ref=f22e327]: Precision long nose pliers with narrow tapered jaws designed for reaching into tight, confined spaces and bending fine wire with accuracy. Made from chrome vanadium steel with induction-hardened cutting edges that cleanly sever copper, brass, and steel wire without crushing or fraying. The slim jaw profile tapers to a fine point, making these pliers indispensable for electrical terminal work, jewelry making, and intricate mechanical repairs. Bi-component comfort grips minimize hand strain during detailed tasks requiring a steady hand and controlled pressure. The leaf-spring joint returns the handles to the open position automatically, speeding up repetitive tasks. A must-have precision tool trusted by electricians, electronics technicians, and hobbyists worldwide.
+        - generic [ref=f22e328]:
+          - button "Decrease quantity" [disabled]
+          - generic [ref=f22e329]: Quantity
+          - spinbutton "Quantity" [disabled] [ref=f22e330]: "1"
+          - button "Increase quantity" [disabled]
+        - paragraph [ref=f22e331]: Out of stock
+        - generic [ref=f22e332]:
+          - button "Add to cart" [disabled]
+          - button [ref=f22e333] [cursor=pointer]
+          - button [ref=f22e337] [cursor=pointer]
+    - generic [ref=f22e342]:
+      - heading "Specifications" [level=3] [ref=f22e343]
+      - table [ref=f22e344]:
+        - rowgroup [ref=f22e345]:
+          - row [ref=f22e346]:
+            - cell "Handle Material" [ref=f22e347]
+            - cell "Bi-component" [ref=f22e348]
+          - row [ref=f22e349]:
+            - cell "Length" [ref=f22e350]
+            - cell "170mm" [ref=f22e351]
+          - row [ref=f22e352]:
+            - cell "Material" [ref=f22e353]
+            - cell "Chrome Vanadium Steel" [ref=f22e354]
+          - row [ref=f22e355]:
+            - cell "Warranty" [ref=f22e356]
+            - cell "2years" [ref=f22e357]
+          - row [ref=f22e358]:
+            - cell "Weight" [ref=f22e359]
+            - cell "220g" [ref=f22e360]
+    - separator [ref=f22e361]
+    - generic [ref=f22e362]:
+      - heading "Related products" [level=2] [ref=f22e363]
+      - generic [ref=f22e365]:
+        - link [ref=f22e366] [cursor=pointer]:
+          - /url: /product/01M5DRPQ0SY333QK4TWP945PD4
+          - img "Combination Pliers" [ref=f22e368]
+          - generic [ref=f22e369]:
+            - heading "Combination Pliers" [level=5] [ref=f22e370]
+            - link "More information" [ref=f22e371]:
+              - /url: "#"
+        - link [ref=f22e372] [cursor=pointer]:
+          - /url: /product/01M5DRPQ0Y0JGPC382NSCQHZGA
+          - img "Pliers" [ref=f22e374]
+          - generic [ref=f22e375]:
+            - heading "Pliers" [level=5] [ref=f22e376]
+            - link "More information" [ref=f22e377]:
+              - /url: "#"
+        - link [ref=f22e378] [cursor=pointer]:
+          - /url: /product/01M5DRPQ1B3TCJD0Q7M0GXENDW
+          - img "Bolt Cutters" [ref=f22e380]
+          - generic [ref=f22e381]:
+            - heading "Bolt Cutters" [level=5] [ref=f22e382]
+            - link "More information" [ref=f22e383]:
+              - /url: "#"
+        - link [ref=f22e384] [cursor=pointer]:
+          - /url: /product/01M5DRPQ1Y3J0N3PV1C60ZBNQ5
+          - img "Slip Joint Pliers" [ref=f22e386]
+          - generic [ref=f22e387]:
+            - heading "Slip Joint Pliers" [level=5] [ref=f22e388]
+            - link "More information" [ref=f22e389]:
+              - /url: "#"
+  - contentinfo [ref=f22e171]:
+    - generic [ref=f22e173]:
+      - generic [ref=f22e174]: Learn & Explore
+      - generic [ref=f22e175]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f22e177] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f22e180]:
+            - generic [ref=f22e181]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f22e183] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f22e186]:
+            - generic [ref=f22e187]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f22e189] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f22e192]:
+            - generic [ref=f22e193]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f22e194]:
+      - generic [ref=f22e195]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f22e196] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f22e197] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f22e198] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f22e199]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f22e201] [cursor=pointer]
+  - button "Show live shop activity" [ref=f22e205] [cursor=pointer]

@@ -1,0 +1,166 @@
+- generic [ref=f18e2]:
+  - generic [ref=f18e3]:
+    - text: View the
+    - link "Documentation" [ref=f18e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f18e5]:
+    - generic [ref=f18e7]:
+      - generic [ref=f18e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f18e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f18e10] [cursor=pointer]
+    - navigation [ref=f18e11]:
+      - generic [ref=f18e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f18e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f18e32]:
+          - menubar "Main menu" [ref=f18e33]:
+            - menuitem [ref=f18e34]:
+              - link "Home" [ref=f18e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f18e36]:
+              - button "Categories" [ref=f18e37] [cursor=pointer]
+            - menuitem [ref=f18e38]:
+              - link "Contact" [ref=f18e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem [ref=f18e40]:
+              - link "Sign in" [ref=f18e41] [cursor=pointer]:
+                - /url: /auth/login
+          - button "Select language" [ref=f18e43] [cursor=pointer]: EN
+  - generic [ref=f18e48]:
+    - generic [ref=f18e92]:
+      - figure [ref=f18e94]:
+        - img "Hammer" [ref=f18e96]
+        - generic [ref=f18e97]:
+          - text: Photo by
+          - link "Jozsef Hocza" [ref=f18e98] [cursor=pointer]:
+            - /url: https://unsplash.com/@hocza
+          - text: "on"
+          - link "Unsplash" [ref=f18e99] [cursor=pointer]:
+            - /url: https://unsplash.com/photos/D3nouOYbALc
+          - text: .
+      - generic [ref=f18e100]:
+        - heading "Hammer" [level=1] [ref=f18e101]
+        - paragraph [ref=f18e102]:
+          - generic "category" [ref=f18e103]: Hammer
+          - generic "brand" [ref=f18e104]: ForgeFlex Tools
+        - generic [ref=f18e105]: $12.58
+        - generic "A = most environmentally friendly, E = higher environmental impact" [ref=f18e107]:
+          - text: "CO₂:"
+          - generic [ref=f18e108]: A
+          - generic [ref=f18e109]: B
+          - generic [ref=f18e110]: C
+          - generic [ref=f18e111]: D
+          - generic [ref=f18e112]: E
+        - paragraph [ref=f18e113]: A dependable standard claw hammer suitable for driving and removing nails in everyday construction, carpentry, and home improvement projects. The 350g carbon steel head is drop-forged and heat-treated for maximum hardness, then fitted to a traditional wooden handle that provides natural shock absorption with each strike. Well-balanced weight distribution between the head and handle ensures accurate strikes with minimal wrist effort, reducing fatigue during repetitive nailing tasks. The polished face resists rust and provides a smooth surface that drives nails cleanly without leaving marks on finish materials. A gently curved claw provides reliable nail extraction leverage without excessive force. This versatile hammer belongs in every toolbox, from professional carpentry workshops to home garages and apartment maintenance kits.
+        - generic [ref=f18e114]:
+          - button "Decrease quantity" [ref=f18e115] [cursor=pointer]
+          - generic [ref=f18e119]: Quantity
+          - spinbutton "Quantity" [ref=f18e120]: "1"
+          - button "Increase quantity" [ref=f18e121] [cursor=pointer]
+        - generic [ref=f18e125]:
+          - button [active] [ref=f18e126] [cursor=pointer]
+          - button [ref=f18e130] [cursor=pointer]
+          - button [ref=f18e134] [cursor=pointer]
+    - generic [ref=f18e139]:
+      - heading "Specifications" [level=3] [ref=f18e140]
+      - table [ref=f18e141]:
+        - rowgroup [ref=f18e142]:
+          - row [ref=f18e143]:
+            - cell "Handle Material" [ref=f18e144]
+            - cell "Wood" [ref=f18e145]
+          - row [ref=f18e146]:
+            - cell "Head Weight" [ref=f18e147]
+            - cell "350g" [ref=f18e148]
+          - row [ref=f18e149]:
+            - cell "Length" [ref=f18e150]
+            - cell "300mm" [ref=f18e151]
+          - row [ref=f18e152]:
+            - cell "Material" [ref=f18e153]
+            - cell "Carbon Steel" [ref=f18e154]
+          - row [ref=f18e155]:
+            - cell "Warranty" [ref=f18e156]
+            - cell "2years" [ref=f18e157]
+          - row [ref=f18e158]:
+            - cell "Weight" [ref=f18e159]
+            - cell "450g" [ref=f18e160]
+    - separator [ref=f18e49]
+    - generic [ref=f18e50]:
+      - heading "Related products" [level=2] [ref=f18e51]
+      - generic [ref=f18e162]:
+        - link [ref=f18e163] [cursor=pointer]:
+          - /url: /product/01M5DRPQ23JKT2322Z8AY0S4BQ
+          - img "Claw Hammer with Shock Reduction Grip" [ref=f18e165]
+          - generic [ref=f18e166]:
+            - heading "Claw Hammer with Shock Reduction Grip" [level=5] [ref=f18e167]
+            - link "More information" [ref=f18e168]:
+              - /url: "#"
+        - link [ref=f18e169] [cursor=pointer]:
+          - /url: /product/01M5DRPQ2GB9WAY1PJ8XDEWDHZ
+          - img "Thor Hammer" [ref=f18e171]
+          - generic [ref=f18e172]:
+            - heading "Thor Hammer" [level=5] [ref=f18e173]
+            - link "More information" [ref=f18e174]:
+              - /url: "#"
+        - link [ref=f18e175] [cursor=pointer]:
+          - /url: /product/01M5DRPQ2MNFA458DGWYA09575
+          - img "Sledgehammer" [ref=f18e177]
+          - generic [ref=f18e178]:
+            - heading "Sledgehammer" [level=5] [ref=f18e179]
+            - link "More information" [ref=f18e180]:
+              - /url: "#"
+        - link [ref=f18e181] [cursor=pointer]:
+          - /url: /product/01M5DRPQ2SVBBDTGYXHN5CZVX6
+          - img "Claw Hammer with Fiberglass Handle" [ref=f18e183]
+          - generic [ref=f18e184]:
+            - heading "Claw Hammer with Fiberglass Handle" [level=5] [ref=f18e185]
+            - link "More information" [ref=f18e186]:
+              - /url: "#"
+        - link [ref=f18e187] [cursor=pointer]:
+          - /url: /product/01M5DRPQ2ZZX2QP5SEYW76YY28
+          - img "Court Hammer" [ref=f18e189]
+          - generic [ref=f18e190]:
+            - heading "Court Hammer" [level=5] [ref=f18e191]
+            - link "More information" [ref=f18e192]:
+              - /url: "#"
+        - link [ref=f18e193] [cursor=pointer]:
+          - /url: /product/01M5DRPQ2AFJQZ6FDM2NF0R5FA
+          - img "Claw Hammer" [ref=f18e195]
+          - generic [ref=f18e196]:
+            - heading "Claw Hammer" [level=5] [ref=f18e197]
+            - link "More information" [ref=f18e198]:
+              - /url: "#"
+  - contentinfo [ref=f18e53]:
+    - generic [ref=f18e55]:
+      - generic [ref=f18e56]: Learn & Explore
+      - generic [ref=f18e57]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f18e59] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f18e62]:
+            - generic [ref=f18e63]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f18e65] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f18e68]:
+            - generic [ref=f18e69]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f18e71] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f18e74]:
+            - generic [ref=f18e75]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f18e76]:
+      - generic [ref=f18e77]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f18e78] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f18e79] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f18e80] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f18e81]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f18e83] [cursor=pointer]
+  - button "Show live shop activity" [ref=f18e87] [cursor=pointer]

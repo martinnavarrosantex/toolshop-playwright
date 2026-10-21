@@ -1,0 +1,97 @@
+- generic [ref=f19e2]:
+  - generic [ref=f19e3]:
+    - text: View the
+    - link "Documentation" [ref=f19e4] [cursor=pointer]:
+      - /url: https://testsmith-io.github.io/practice-software-testing/#/
+    - text: for this application.
+  - generic [ref=f19e5]:
+    - generic [ref=f19e7]:
+      - generic [ref=f19e8]: Practice Black Box Testing & Bug Hunting
+      - button "Testing Guide" [ref=f19e9] [cursor=pointer]
+      - button "🐛 Bug Hunting" [ref=f19e10] [cursor=pointer]
+    - navigation [ref=f19e11]:
+      - generic [ref=f19e12]:
+        - link "Practice Software Testing - Toolshop" [ref=f19e13] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f19e32]:
+          - menubar "Main menu" [ref=f19e33]:
+            - menuitem [ref=f19e34]:
+              - link "Home" [ref=f19e35] [cursor=pointer]:
+                - /url: /
+            - menuitem [ref=f19e36]:
+              - button "Categories" [ref=f19e37] [cursor=pointer]
+            - menuitem [ref=f19e38]:
+              - link "Contact" [ref=f19e39] [cursor=pointer]:
+                - /url: /contact
+            - menuitem [ref=f19e40]:
+              - link "Sign in" [ref=f19e41] [cursor=pointer]:
+                - /url: /auth/login
+            - menuitem [ref=f19e42]:
+              - link "cart" [ref=f19e43] [cursor=pointer]:
+                - /url: /checkout
+                - generic [ref=f19e47]: "1"
+          - button "Select language" [ref=f19e49] [cursor=pointer]: EN
+  - generic [ref=f19e55]:
+    - list [ref=f19e57]:
+      - listitem [ref=f19e98]:
+        - generic [ref=f19e99] [cursor=pointer]:
+          - generic [ref=f19e100]: Cart
+          - generic [ref=f19e101]: "1"
+      - listitem [ref=f19e152]:
+        - generic [ref=f19e153] [cursor=pointer]:
+          - generic [ref=f19e154]: Sign in
+          - generic [ref=f19e155]: "2"
+      - listitem [ref=f19e185]:
+        - generic [ref=f19e186] [cursor=pointer]:
+          - generic [ref=f19e187]: Billing Address
+          - generic [ref=f19e188]: "3"
+      - listitem:
+        - generic:
+          - generic: Payment
+          - generic: "4"
+    - generic [ref=f19e193]:
+      - heading "Payment" [level=3] [ref=f19e194]
+      - generic [ref=f19e196]:
+        - generic [ref=f19e197]: Payment Method
+        - combobox "Payment Method" [ref=f19e198]:
+          - option "Choose your payment method" [disabled]
+          - option "Bank Transfer"
+          - option "Cash on Delivery" [selected]
+          - option "Credit Card"
+          - option "Buy Now Pay Later"
+          - option "Gift Card"
+      - button "Check payment" [ref=f19e200] [cursor=pointer]
+  - contentinfo [ref=f19e59]:
+    - generic [ref=f19e61]:
+      - generic [ref=f19e62]: Learn & Explore
+      - generic [ref=f19e63]:
+        - link "Learn Test Automation Hands-on courses for Playwright, Robot Framework, APIs and more" [ref=f19e65] [cursor=pointer]:
+          - /url: https://onlinecourses.testsmith.io
+          - generic [ref=f19e68]:
+            - generic [ref=f19e69]: Learn Test Automation
+            - text: Hands-on courses for Playwright, Robot Framework, APIs and more
+        - link "API Spector Open-source API testing, mocking and contract testing" [ref=f19e71] [cursor=pointer]:
+          - /url: https://api-spector.dev
+          - generic [ref=f19e74]:
+            - generic [ref=f19e75]: API Spector
+            - text: Open-source API testing, mocking and contract testing
+        - link "GitHub Source code, issues and contributions" [ref=f19e77] [cursor=pointer]:
+          - /url: https://github.com/testsmith-io/practice-software-testing
+          - generic [ref=f19e80]:
+            - generic [ref=f19e81]: GitHub
+            - text: Source code, issues and contributions
+    - generic [ref=f19e82]:
+      - generic [ref=f19e83]:
+        - text: This is a DEMO application, used for software testing training purpose. |
+        - link "Privacy Policy" [ref=f19e84] [cursor=pointer]:
+          - /url: /privacy
+        - text: "| Banner photo by"
+        - link "Barn Images" [ref=f19e85] [cursor=pointer]:
+          - /url: https://unsplash.com/@barnimages
+        - text: "on"
+        - link "Unsplash" [ref=f19e86] [cursor=pointer]:
+          - /url: https://unsplash.com/photos/t5YUoHW6zRo
+        - text: .
+      - generic [ref=f19e87]: v2.5 | Built 2026-10-11 | Angular 20.0.5
+  - button "Open chat" [ref=f19e89] [cursor=pointer]
+  - button "Show live shop activity" [ref=f19e93] [cursor=pointer]
