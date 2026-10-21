@@ -9,3 +9,4 @@ playwright/.cache/
 /playwright/.auth/
 .playwright-mcp/
 .claude/settings.local.json
+.DS_Store
