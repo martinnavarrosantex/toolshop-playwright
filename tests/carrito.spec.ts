@@ -4,7 +4,7 @@ test('el total del carrito es el precio por la cantidad', async ({ page }) => {
   await page.goto('/');
   await page.getByTestId('product-name').filter({ hasText: 'Combination Pliers' }).click();
   await page.getByTestId('increase-quantity').click();
-  await page.getByTestId('add-to-basket').click();
+  await page.getByTestId('add-to-cart').click();
   await page.getByTestId('nav-cart').click();
 
   await expect(page.getByTestId('product-quantity')).toHaveValue('2');
