@@ -10,7 +10,11 @@ test.describe('Producto', () => {
     await page.goto('/');
     await page.getByRole('textbox', { name: 'Search' }).fill('Long Nose Pliers');
     await page.getByRole('textbox', { name: 'Search' }).press('Enter');
-    await expect(page.getByText('Out of stock')).toBeVisible();
+    // La búsqueda trae más de un producto agotado: se mira solo la tarjeta de Long Nose Pliers.
+    const tarjeta = page
+      .getByRole('link')
+      .filter({ has: page.getByRole('heading', { name: 'Long Nose Pliers', exact: true }) });
+    await expect(tarjeta.getByTestId('out-of-stock')).toBeVisible();
     await abrirProducto(page, 'Long Nose Pliers');
     await expect(page.getByTestId('out-of-stock')).toHaveText('Out of stock');
 
