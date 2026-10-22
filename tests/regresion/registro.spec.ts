@@ -5,9 +5,7 @@ import { test, expect } from '@playwright/test';
 import { completarRegistro, iniciarSesion, nuevaCuenta } from './helpers';
 
 test.describe('Registro', () => {
-  // Bug de Toolshop: el registro no avisa que el email no tiene formato válido (el login sí).
-  // Cuando lo corrijan, este test pasa a fallar.
-  test.fail('10. Registro de usuario nuevo con validación de campos', async ({ page }) => {
+  test('10. Registro de usuario nuevo con validación de campos', async ({ page }) => {
     const cuenta = nuevaCuenta('ana');
 
     // 1. Ir a /auth/register y clic en register-submit sin completar nada.
@@ -34,7 +32,10 @@ test.describe('Registro', () => {
     await expect(page.getByText('Password can not include invalid characters.')).toBeVisible();
 
     // 3. Probar email sin formato válido, fecha de nacimiento fuera de formato y teléfono con letras.
-    await page.getByTestId('email').fill('sinarroba');
+    // Después del primer envío, este campo no toma el valor cargado con fill(): se escribe
+    // tecla por tecla, como un usuario (verificado a mano: así el error de formato aparece).
+    await page.getByTestId('email').pressSequentially('sinarroba');
+    await page.getByTestId('email').blur();
     await expect(page.getByText('Email format is invalid')).toBeVisible();
     await page.getByTestId('dob').fill('15/05/1990');
     await expect(page.getByText('Please enter a valid date in YYYY-MM-DD format.')).toBeVisible();
