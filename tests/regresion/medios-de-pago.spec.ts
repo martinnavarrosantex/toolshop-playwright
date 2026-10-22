@@ -4,33 +4,34 @@
 import { test, expect, Page } from '@playwright/test';
 import {
   agregarProducto,
-  completarDireccion,
+  completarDireccionYContinuar,
+  productosConStock,
   confirmarPago,
   iniciarSesion,
   registrarCuenta,
 } from './helpers';
 
 async function llegarAPago(page: Page) {
-  await agregarProducto(page, 'Hammer');
+  await agregarProducto(page, (await productosConStock(page, 1))[0].nombre);
   await page.goto('/checkout');
   await page.getByTestId('proceed-1').click();
   await page.getByTestId('proceed-2').click();
-  await completarDireccion(page);
-  await page.getByTestId('proceed-3').click();
+  await completarDireccionYContinuar(page);
   await expect(page.getByTestId('payment-method')).toBeVisible();
 }
 
 test.describe('Checkout', () => {
   test('3. Checkout con cada medio de pago', async ({ page }) => {
+    // Hace un checkout completo por cada medio de pago (5): necesita más que los 30 s por defecto.
+    test.setTimeout(120_000);
     // 1. Precondición: usuario logueado. Opciones reales del desplegable de pago.
     const cuenta = await registrarCuenta(page, 'pagos');
     await iniciarSesion(page, cuenta);
-    await agregarProducto(page, 'Hammer');
+    await agregarProducto(page, (await productosConStock(page, 1))[0].nombre);
     await page.goto('/checkout');
     await page.getByTestId('proceed-1').click();
     await page.getByTestId('proceed-2').click();
-    await completarDireccion(page);
-    await page.getByTestId('proceed-3').click();
+    await completarDireccionYContinuar(page);
     const metodo = page.getByTestId('payment-method');
     await expect(metodo.getByRole('option')).toHaveText([
       'Choose your payment method',

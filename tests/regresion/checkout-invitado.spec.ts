@@ -2,16 +2,24 @@
 // seed: tests/seed.spec.ts
 
 import { test, expect } from '@playwright/test';
-import { agregarProducto, completarDireccion, confirmarPago, filaCarrito } from './helpers';
+import {
+  agregarProducto,
+  completarDireccionYContinuar,
+  confirmarPago,
+  dinero,
+  filaCarrito,
+  productosConStock,
+} from './helpers';
 
 test.describe('Checkout', () => {
   test('2. Checkout como invitado', async ({ page }) => {
-    // 1. Precondición: sesión cerrada, carrito vacío. Agregar 'Hammer' y abrir /checkout.
-    await agregarProducto(page, 'Hammer');
+    // 1. Precondición: sesión cerrada, carrito vacío. Agregar un producto con stock y abrir /checkout.
+    const [producto] = await productosConStock(page, 1);
+    await agregarProducto(page, producto.nombre);
     await page.goto('/checkout');
-    const hammer = filaCarrito(page, 'Hammer');
-    await expect(hammer.getByTestId('product-quantity')).toHaveValue('1');
-    await expect(page.getByTestId('cart-total')).toHaveText('$12.58');
+    const fila = filaCarrito(page, producto.nombre);
+    await expect(fila.getByTestId('product-quantity')).toHaveValue('1');
+    await expect(page.getByTestId('cart-total')).toHaveText(dinero(producto.precio));
 
     // 2. Clic en proceed-1.
     await page.getByTestId('proceed-1').click();
@@ -41,8 +49,7 @@ test.describe('Checkout', () => {
     await expect(page.getByTestId('proceed-3')).toBeVisible();
 
     // 4. Completar dirección y pago, y confirmar.
-    await completarDireccion(page);
-    await page.getByTestId('proceed-3').click();
+    await completarDireccionYContinuar(page);
     await page.getByTestId('payment-method').selectOption('cash-on-delivery');
     const confirmacion = await confirmarPago(page);
     await expect(confirmacion).toBeVisible();

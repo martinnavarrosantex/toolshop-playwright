@@ -1,6 +1,50 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { LoginPage } from '../../pages/login-page';
 
+const API = 'https://api.practicesoftwaretesting.com';
+
+export interface Producto {
+  nombre: string;
+  precio: number;
+}
+
+/** Importe con el formato que muestra Toolshop, por ejemplo $12.58. */
+export const dinero = (importe: number) => `$${importe.toFixed(2)}`;
+
+type ProductoApi = { name: string; price: number; in_stock: boolean; is_rental: boolean; description?: string };
+
+async function catalogo(page: Page): Promise<ProductoApi[]> {
+  const productos: ProductoApi[] = [];
+  for (let pagina = 1; pagina <= 10; pagina++) {
+    const res = await page.request.get(`${API}/products`, { params: { page: pagina } });
+    expect(res.ok()).toBeTruthy();
+    const body = await res.json();
+    productos.push(...body.data);
+    if (pagina >= body.last_page) break;
+  }
+  // Solo nombres únicos, para que la búsqueda y la fila del carrito no sean ambiguas.
+  return productos.filter((p) => productos.filter((q) => q.name === p.name).length === 1);
+}
+
+/**
+ * Toolshop es una demo compartida: otros usuarios compran y el stock cambia durante el día.
+ * Por eso los tests eligen en el momento productos con stock y sin límite de "uno por cliente".
+ */
+export async function productosConStock(page: Page, cantidad: number): Promise<Producto[]> {
+  const elegidos = (await catalogo(page))
+    .filter((p) => p.in_stock && !p.is_rental && !/per customer/i.test(p.description ?? ''))
+    .slice(0, cantidad)
+    .map((p) => ({ nombre: p.name, precio: p.price }));
+  expect(elegidos, `Toolshop tiene ${cantidad} productos con stock`).toHaveLength(cantidad);
+  return elegidos;
+}
+
+/** Un producto agotado en este momento, si hay alguno. */
+export async function productoSinStock(page: Page): Promise<Producto | undefined> {
+  const p = (await catalogo(page)).find((x) => !x.in_stock && !x.is_rental);
+  return p && { nombre: p.name, precio: p.price };
+}
+
 export interface Cuenta {
   email: string;
   password: string;
@@ -18,6 +62,19 @@ export function nuevaCuenta(prefijo = 'ana'): Cuenta {
   };
 }
 
+/**
+ * Dirección de prueba: la que devuelve el postcode-lookup de Toolshop para 28001 / 12.
+ * Toolshop valida la factura contra esos datos (regla AddressMatchesCountry), así que la
+ * cuenta y el checkout usan exactamente la misma dirección.
+ */
+export async function direccionDePrueba(page: Page) {
+  const res = await page.request.get('https://api.practicesoftwaretesting.com/postcode-lookup', {
+    params: { country: 'ES', postcode: '28001', house_number: '12' },
+  });
+  expect(res.ok()).toBeTruthy();
+  return (await res.json()) as { street: string; city: string; state: string };
+}
+
 export async function completarRegistro(page: Page, cuenta: Cuenta) {
   await page.getByTestId('first-name').fill(cuenta.nombre);
   await page.getByTestId('last-name').fill(cuenta.apellido);
@@ -25,9 +82,10 @@ export async function completarRegistro(page: Page, cuenta: Cuenta) {
   await page.getByTestId('country').selectOption('Spain');
   await page.getByTestId('postal_code').fill('28001');
   await page.getByTestId('house_number').fill('12');
-  await page.getByTestId('street').fill('Calle Test');
-  await page.getByTestId('city').fill('Ciudad');
-  await page.getByTestId('state').fill('Estado');
+  const direccion = await direccionDePrueba(page);
+  await page.getByTestId('street').fill(direccion.street);
+  await page.getByTestId('city').fill(direccion.city);
+  await page.getByTestId('state').fill(direccion.state);
   await page.getByTestId('phone').fill('600123456');
   await page.getByTestId('email').fill(cuenta.email);
   await page.getByTestId('password').fill(cuenta.password);
@@ -78,13 +136,24 @@ export function filaCarrito(page: Page, nombre: string): Locator {
     .filter({ has: page.getByTestId('product-title').getByText(nombre, { exact: true }) });
 }
 
-export async function completarDireccion(page: Page) {
+/**
+ * Completa la dirección de facturación y pasa al paso de pago.
+ * Con usuario logueado, Toolshop precarga la dirección de la cuenta (que no guarda la altura) y esa
+ * precarga puede llegar tarde y vaciar la altura. Por eso carga, avanza y verifica que se llegó al
+ * paso de pago en un mismo reintento.
+ */
+export async function completarDireccionYContinuar(page: Page) {
+  const direccion = await direccionDePrueba(page);
   await page.getByTestId('country').selectOption('ES');
-  await page.getByTestId('postal_code').fill('28001');
-  await page.getByTestId('house_number').fill('12');
-  await page.getByTestId('street').fill('Calle Test');
-  await page.getByTestId('city').fill('Ciudad');
-  await page.getByTestId('state').fill('Estado');
+  await expect(async () => {
+    await page.getByTestId('postal_code').fill('28001');
+    await page.getByTestId('house_number').fill('12');
+    await page.getByTestId('street').fill(direccion.street);
+    await page.getByTestId('city').fill(direccion.city);
+    await page.getByTestId('state').fill(direccion.state);
+    await page.getByTestId('proceed-3').click({ timeout: 2000 });
+    await expect(page.getByTestId('payment-method')).toBeVisible({ timeout: 2000 });
+  }).toPass({ timeout: 20000 });
 }
 
 /** Primer clic de "Check payment" y segundo clic "Confirm". Devuelve el texto del pedido. */
@@ -95,5 +164,8 @@ export async function confirmarPago(page: Page) {
   await page.getByTestId('finish').click();
   const confirmacion = page.getByText(/Thanks for your order! Your invoice number is INV-\d+/);
   await expect(confirmacion).toBeVisible();
+  // Después de confirmar, la app vacía el carrito (DELETE /carts). Se espera a que quede vacío
+  // antes de seguir: navegar antes cancela esa request y el próximo checkout arrastra el carrito.
+  await expect(page.getByTestId('cart-quantity')).toHaveCount(0);
   return confirmacion;
 }

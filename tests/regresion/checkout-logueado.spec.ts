@@ -4,7 +4,9 @@
 import { test, expect } from '@playwright/test';
 import {
   agregarProducto,
-  completarDireccion,
+  completarDireccionYContinuar,
+  dinero,
+  productosConStock,
   confirmarPago,
   filaCarrito,
   iniciarSesion,
@@ -12,33 +14,31 @@ import {
 } from './helpers';
 
 test.describe('Checkout', () => {
-  // Bug de Toolshop: después de comprar, el carrito sigue mostrando el producto
-  // (la factura se genera, pero cart-quantity queda en 1). Cuando lo corrijan, este test pasa a fallar.
-  test.fail('1. Checkout completo con usuario logueado', async ({ page }) => {
+  test('1. Checkout completo con usuario logueado', async ({ page }) => {
     // 1. Precondición: cuenta propia registrada, carrito vacío. Iniciar sesión.
     const cuenta = await registrarCuenta(page, 'checkout');
     await iniciarSesion(page, cuenta);
     await expect(page.getByTestId('nav-menu')).toContainText('Ana Prueba');
 
-    // 2. En la home abrir 'Hammer' y hacer clic en Add to cart.
-    await agregarProducto(page, 'Hammer');
+    // 2. Agregar al carrito un producto con stock.
+    const [producto] = await productosConStock(page, 1);
+    await agregarProducto(page, producto.nombre);
     await expect(page.getByTestId('cart-quantity')).toHaveText('1');
 
     // 3. Abrir /checkout y revisar la tabla. Clic en proceed-1.
     await page.goto('/checkout');
-    const hammer = filaCarrito(page, 'Hammer');
-    await expect(hammer.getByTestId('product-quantity')).toHaveValue('1');
-    await expect(hammer.getByTestId('product-price')).toHaveText('$12.58');
-    await expect(hammer.getByTestId('line-price')).toHaveText('$12.58');
-    await expect(page.getByTestId('cart-total')).toHaveText('$12.58');
+    const fila = filaCarrito(page, producto.nombre);
+    await expect(fila.getByTestId('product-quantity')).toHaveValue('1');
+    await expect(fila.getByTestId('product-price')).toHaveText(dinero(producto.precio));
+    await expect(fila.getByTestId('line-price')).toHaveText(dinero(producto.precio));
+    await expect(page.getByTestId('cart-total')).toHaveText(dinero(producto.precio));
     await page.getByTestId('proceed-1').click();
     // El paso Sign in ya está resuelto por la sesión (proceed-2 solo confirma).
     await expect(page.getByText('you are already logged in')).toBeVisible();
     await page.getByTestId('proceed-2').click();
 
     // 4. Completar dirección y clic en proceed-3.
-    await completarDireccion(page);
-    await page.getByTestId('proceed-3').click();
+    await completarDireccionYContinuar(page);
     await expect(page.getByTestId('payment-method')).toBeVisible();
 
     // 5. Elegir un medio de pago, completar sus datos y confirmar.
@@ -49,9 +49,12 @@ test.describe('Checkout', () => {
     const confirmacion = await confirmarPago(page);
     const factura = (await confirmacion.innerText()).match(/INV-\d+/)![0];
 
-    // El pedido figura en /account/invoices y el carrito queda vacío.
+    // El carrito queda vacío. Se verifica antes de navegar: la app lo vacía con un
+    // DELETE /carts después de confirmar, y navegar antes cancela esa request.
+    await expect(page.getByTestId('cart-quantity')).toHaveCount(0);
+
+    // El pedido figura en /account/invoices.
     await page.goto('/account/invoices');
     await expect(page.getByRole('cell', { name: factura })).toBeVisible();
-    await expect(page.getByTestId('cart-quantity')).toHaveCount(0);
   });
 });
