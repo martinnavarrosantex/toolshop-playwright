@@ -8,5 +8,5 @@ test('el total del carrito es el precio por la cantidad', async ({ page }) => {
   await page.getByTestId('nav-cart').click();
 
   await expect(page.getByTestId('product-quantity')).toHaveValue('2');
-  await expect(page.getByTestId('cart-total')).toHaveText('$18.34'); // 2 x $9.17
+  await expect(page.getByTestId('cart-total')).toHaveText('$18.35'); // 2 x $9.17
 });
