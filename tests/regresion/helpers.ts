@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { expect, Locator, Page, test } from '@playwright/test';
 import { LoginPage } from '../../pages/login-page';
 
 const API = 'https://api.practicesoftwaretesting.com';
@@ -6,6 +6,13 @@ const API = 'https://api.practicesoftwaretesting.com';
 export interface Producto {
   nombre: string;
   precio: number;
+}
+
+/**
+ * Deja asentado qué datos usó el test. Si falla, el pipeline los copia en "Datos de prueba" del reporte.
+ */
+export function registrarDato(descripcion: string) {
+  test.info().annotations.push({ type: 'dato', description: descripcion });
 }
 
 /** Importe con el formato que muestra Toolshop, por ejemplo $12.58. */
@@ -36,12 +43,14 @@ export async function productosConStock(page: Page, cantidad: number): Promise<P
     .slice(0, cantidad)
     .map((p) => ({ nombre: p.name, precio: p.price }));
   expect(elegidos, `Toolshop tiene ${cantidad} productos con stock`).toHaveLength(cantidad);
+  registrarDato(`Productos con stock elegidos: ${elegidos.map((p) => `${p.nombre} (${dinero(p.precio)})`).join(', ')}`);
   return elegidos;
 }
 
 /** Un producto agotado en este momento, si hay alguno. */
 export async function productoSinStock(page: Page): Promise<Producto | undefined> {
   const p = (await catalogo(page)).find((x) => !x.in_stock && !x.is_rental);
+  if (p) registrarDato(`Producto sin stock: ${p.name}`);
   return p && { nombre: p.name, precio: p.price };
 }
 
@@ -94,6 +103,7 @@ export async function completarRegistro(page: Page, cuenta: Cuenta) {
 /** Crea una cuenta descartable propia desde la UI de registro. */
 export async function registrarCuenta(page: Page, prefijo = 'ana'): Promise<Cuenta> {
   const cuenta = nuevaCuenta(prefijo);
+  registrarDato(`Cuenta nueva: ${cuenta.email}`);
   await page.goto('/auth/register');
   await completarRegistro(page, cuenta);
   await page.getByTestId('register-submit').click();

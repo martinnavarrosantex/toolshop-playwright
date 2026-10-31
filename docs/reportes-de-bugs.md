@@ -56,8 +56,8 @@ Cualquier persona, sin iniciar sesión, puede ver cuántas unidades exactas hay 
 - **Archivo y clase**: `sprint5-with-bugs/API/app/Models/Product.php`
   - Línea 54 › `Product::$hidden`: solo oculta `created_at` y `updated_at`.
   - Línea 55 › `Product::$appends`: no agrega `in_stock`.
-- **Commit o PR que lo introdujo**: [FALTA DATO: bug sembrado en una carpeta paralela, sin commit que lo introduzca]. Se encontró comparando con sprint5.
-- **Cómo lo encontraste**: misma request contra las dos demos → comparar `Product.php` entre sprint5 y sprint5-with-bugs.
+- **Commit o PR que lo introdujo**: `d8e53bd` ("initial commit", Roy de Kleijn, 2023-01-16). `git blame` muestra que la línea 54 (`$hidden`) no cambió desde ese commit. En la versión correcta, el arreglo es `6b15b5e` ("in stock is not showing the actual number", 2024-03-14), que agregó `stock` e IDs a `$hidden` y `in_stock` a `$appends` en `sprint5/API/app/Models/Product.php`, pero nunca se aplicó a `sprint5-with-bugs`. La línea 55 la tocó por última vez `fecffa9` (2026-03-29) sin agregar `in_stock`.
+- **Cómo lo encontraste**: misma request contra las dos demos → comparar `Product.php` entre sprint5 y sprint5-with-bugs → `git blame -L 54,55` sobre el archivo con bugs y `git log -S"'stock'"` sobre el correcto.
 - **Causa**: en sprint5, `$hidden` incluye `brand_id`, `category_id`, `product_image_id` y `stock` (línea 57), y `getInStockAttribute()` devuelve un booleano para usuarios no admin (líneas 87–106). En la versión con bugs esos campos no están ocultos y no existe el atributo `in_stock`.
 - **Certeza**: Confirmada: reproducido por API y ubicado en el código de las dos versiones.
 
@@ -110,7 +110,7 @@ Cuando el cliente ordena los productos por "Price (Low - High)", los ve del más
 ### Impacto
 - **Qué flujo afecta**: búsqueda y comparación de productos en el catálogo
 - **A quién afecta**: a todos los visitantes que usan el orden, en la home y en las páginas de categoría
-- **Cuántos**: [FALTA DATO: en un proyecto real, el número sale de analytics: sesiones que usan el orden]
+- **Cuántos**: 4 de las 6 opciones del desplegable (las de nombre y precio) ordenan al revés de su etiqueta. El desplegable es el mismo en la home y en las páginas de categoría, así que alcanza a los 26 productos del catálogo (campo `total` de `GET /products`, medido el 2026-10-30). [FALTA DATO: cuántas sesiones usan el orden sale de analytics, que la demo no tiene]
 - **Alternativa (workaround)**: elegir la opción contraria ("High - Low" para ver de menor a mayor)
 - **¿Funcionaba antes?**: Sí, en sprint5
 
@@ -123,8 +123,8 @@ Cuando el cliente ordena los productos por "Price (Low - High)", los ve del más
 - **Archivo y clase**:
   - `sprint5-with-bugs/UI/src/app/products/category/category.component.html`, líneas 16–19
   - `sprint5-with-bugs/UI/src/app/products/overview/overview.component.html`, líneas 21–24 (mismo defecto en la home)
-- **Commit o PR que lo introdujo**: [FALTA DATO: bug sembrado, sin commit]. Se encontró comparando con sprint5.
-- **Cómo lo encontraste**: comparar las opciones del desplegable en las dos demos → buscar `price,asc` en los componentes de las dos versiones.
+- **Commit o PR que lo introdujo**: `d8e53bd` ("initial commit", Roy de Kleijn, 2023-01-16). `git blame` sin opciones marca `085b04e` ("angular update", 2025-06-29), pero ese commit solo cambió la sangría: `git blame -w` (ignorando espacios) muestra que las cuatro opciones cruzadas están así desde `d8e53bd`, en los dos componentes.
+- **Cómo lo encontraste**: comparar las opciones del desplegable en las dos demos → buscar `price,asc` en los componentes de las dos versiones → `git blame -w -L 16,19` y `-L 21,24`.
 - **Causa**: los `value` de las opciones están cruzados con sus etiquetas. La API ordena bien: el error es solo de la UI.
 - **Certeza**: Confirmada: reproducido en la UI y ubicado en el código de las dos versiones.
 
@@ -187,8 +187,8 @@ El filtro de rango de precio de la home muestra un máximo ($100 por defecto), p
 ### Fuente del error (nivel 2)
 - **Archivo y clase**: `sprint5-with-bugs/UI/src/app/_services/product.service.ts`
   - Línea 35 › `ProductService.getProductsNew`: arma `between` solo con el mínimo, aunque recibe `maxPrice`.
-- **Commit o PR que lo introdujo**: [FALTA DATO: bug sembrado, sin commit]. Se encontró comparando con sprint5.
-- **Cómo lo encontraste**: capturar la request de la home → buscar `between` en el servicio de productos de las dos versiones.
+- **Commit o PR que lo introdujo**: `d8e53bd` ("initial commit", Roy de Kleijn, 2023-01-16). `git blame -L 33,37` muestra que la línea 35 no cambió desde ese commit.
+- **Cómo lo encontraste**: capturar la request de la home → buscar `between` en el servicio de productos de las dos versiones → `git blame` sobre la línea.
 - **Causa**: el parámetro se arma sin `maxPrice`. La API filtra bien cuando recibe los dos valores.
 - **Certeza**: Confirmada: reproducido en la red del navegador y ubicado en el código de las dos versiones.
 
