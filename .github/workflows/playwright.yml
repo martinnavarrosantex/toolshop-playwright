@@ -19,6 +19,17 @@ jobs:
       run: npx playwright install chromium
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Generar reporte de fallas en formato estándar
+      if: failure()
+      run: |
+        node scripts/reporte-de-fallas.mjs resultados.json reporte-de-fallas.md
+        cat reporte-de-fallas.md >> "$GITHUB_STEP_SUMMARY"
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: reporte-de-fallas
+        path: reporte-de-fallas.md
+        retention-days: 30
     - uses: actions/upload-artifact@v4
       if: failure()
       with:

@@ -2,6 +2,8 @@ node_modules/
 test-results/
 playwright-report/
 blob-report/
+resultados.json
+reporte-de-fallas.md
 playwright/.cache/
 .env
 
