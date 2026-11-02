@@ -23,7 +23,7 @@ Requiere Node 18 o superior.
 ```bash
 npm ci
 npx playwright install chromium
-npx playwright test                    # toda la suite
+npx playwright test                    # toda la suite (unos 4 minutos, un test a la vez)
 npx playwright test tests/regresion    # solo los 10 casos de regresión
 npx playwright show-report             # ver el resultado
 ```
@@ -46,6 +46,14 @@ Están versionados en el repositorio, en `tests/regresion/helpers.ts`:
 - Productos: se eligen al momento entre los que tienen stock, porque Toolshop es una demo compartida y el stock cambia.
 
 Cada test registra los datos que usó (`registrarDato`), y el reporte de fallas los incluye.
+
+### Si algo falla
+
+Toolshop es una demo pública y compartida, así que algunas fallas no son de la app ni del test:
+
+- **"Performing security verification" en la captura del error:** es la verificación antibots de Cloudflare que usa Toolshop. Esperá unos minutos y repetí solo lo que falló con `npx playwright test --last-failed`.
+- **Un test que falla una vez y después pasa:** puede ser la demo lenta o un cambio de stock. Repetilo solo (`npx playwright test <archivo>`) antes de reportarlo como bug.
+- **Si sigue fallando igual:** ahí sí es una falla para revisar; el reporte HTML (`npx playwright show-report`) tiene la captura y el paso que falla.
 
 ### Reportes de bugs
 

@@ -3,7 +3,9 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // Un solo worker también en local: Toolshop es una demo compartida y varios tests crean cuentas;
+  // en paralelo, el registro llega a tardar más de lo que espera el test.
+  workers: 1,
   // html para mirar las fallas; json para que el pipeline arme el reporte en formato estándar (scripts/reporte-de-fallas.mjs).
   reporter: [['html'], ['json', { outputFile: 'resultados.json' }]],
   use: {
